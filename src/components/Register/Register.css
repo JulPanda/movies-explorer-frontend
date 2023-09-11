@@ -1,0 +1,24 @@
+.register__button {
+  max-width: 100%;
+  margin-top: 69px;
+  margin-bottom: 16px;
+  padding: 13px 0 15px;
+  background-color: #FF6838;
+  color: #fff;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.21;
+  text-align: center;
+  border: none;
+  border-radius: 3px;
+}
+
+@media screen and (max-width: 435px) {
+  .register__button {
+    margin-top: 157px;
+    margin-bottom: 14px;
+    padding-top: 15px;
+    font-size: 12px;
+  }
+}

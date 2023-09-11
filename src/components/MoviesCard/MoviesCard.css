@@ -1,0 +1,135 @@
+.element {
+  margin: 0 auto;
+  padding: 0;
+  min-width: 270px;
+  list-style-type: none;
+  background-color: #fff;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0 16px 24px rgba(0, 0, 0, 0.05);
+}
+
+.element__image {
+  margin: 0;
+  padding: 0;
+  width: 270px;
+  height: 151px;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 10px 10px 0 0;
+  display: block;
+}
+
+.element__block {
+  margin: 0;
+  padding: 14px 12px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 270px;
+  box-sizing: border-box;
+}
+
+.element__text-block {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.element__title {
+  margin: 0;
+  padding: 0;
+  color: #000;
+  font-style: normal;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.21;
+  max-width: 270px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: left;
+}
+
+.element__duration {
+  margin: 10px 0 0;
+  padding: 0;
+  color: #A0A0A0;
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.21;
+  max-width: 270px;
+  text-align: left;
+}
+
+.element__button-saved {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #F9F9F9;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.09);
+}
+
+
+.element__button-saved_active {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #2BE080;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.09);
+}
+
+.element__close-button_saved-movies {
+  margin: 0;
+  padding: 2.34px;
+  box-sizing: border-box;
+  background-image: url(../../images/btn_close_movies.svg);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+
+@media screen and (max-width: 1006px) {
+  .element {
+    min-width: 339px;
+  }
+
+  .element__image {
+    width: 339px;
+    height: 190px;
+  }
+
+  .element__block {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 725px) {
+  .element {
+    min-width: 300px;
+  }
+
+  .element__image {
+    width: 300px;
+    height: 168px;
+  }
+
+  .element__block {
+    max-width: 300px;
+  }
+}
