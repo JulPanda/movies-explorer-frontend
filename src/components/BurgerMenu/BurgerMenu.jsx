@@ -5,7 +5,7 @@ function BurgerMenu({ isMenuOpen, onClose }) {
   const location = useLocation();
 
   return (
-    <div
+    <section
       className={`popup popup__burger-menu ${isMenuOpen ? `popup_opened` : ``}`}
     >
       <div className="popup__content">
@@ -44,7 +44,7 @@ function BurgerMenu({ isMenuOpen, onClose }) {
           </NavLink>
         </nav>
       </div>
-    </div>
+    </section>
   );
 }
 

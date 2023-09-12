@@ -15,7 +15,7 @@ function Navigation(props) {
 
   return (
     <>
-      <div className="navigation__main">
+      <div className="navigation">
         <nav className="navigation__nav">
           <NavLink
             className={`link navigation__nav-link navigation__nav-link_${props.className}`}

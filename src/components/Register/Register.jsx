@@ -17,7 +17,7 @@ function Register({ handleRegister }) {
   };
 
   return (
-    <div className="login">
+    <main className="login">
       <div className="login__header">
         <Link to="/" className="login__header-link">
           <img src={logo} alt="Логотип" className="login__header-logo" />
@@ -76,7 +76,7 @@ function Register({ handleRegister }) {
           </Link>
         </p>
       </form>
-    </div>
+    </main>
   );
 }
 

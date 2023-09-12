@@ -12,7 +12,7 @@ function MoviesCard(props) {
     : `element__button-saved`;
 
   return (
-    <div className="element-card">
+    <section className="element-card">
       <li className="element">
         <img
           className="element__image"
@@ -27,7 +27,7 @@ function MoviesCard(props) {
           <button
             className={
               `${location.pathname === "/saved-movies"}`
-                ? "element__close-button_saved-movies"
+                ? "element__close-button-saved-movies"
                 : `${cardSavedButtonClassName}`
             }
             type="button"
@@ -36,7 +36,7 @@ function MoviesCard(props) {
           ></button>
         </div>
       </li>
-    </div>
+    </section>
   );
 }
 export default MoviesCard;

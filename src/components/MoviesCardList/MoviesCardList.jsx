@@ -9,14 +9,14 @@ import image_6 from "../../images/pic_movies_6.png";
 
 function MoviesCardList(props) {
   return (
-    <div className="moviescard-list">
+    <section className="moviescard-list">
       <MoviesCard image={image_1} />
       <MoviesCard image={image_2} />
       <MoviesCard image={image_3} />
       <MoviesCard image={image_4} />
       <MoviesCard image={image_5} />
       <MoviesCard image={image_6} />
-    </div>
+    </section>
   );
 }
 

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Portfolio() {
   return (
-    <div className="portfolio">
+    <section className="portfolio">
       <h2 className="portfolio__title">Портфолио</h2>
       <ul className="portfolio-link__list">
         <li className="portfolio-link__item portfolio-link__item_line">
@@ -40,7 +40,7 @@ function Portfolio() {
           <p className="link portfolio-link__item_arrow">&#8599;</p>
         </li>
       </ul>
-    </div>
+    </section>
   );
 }
 

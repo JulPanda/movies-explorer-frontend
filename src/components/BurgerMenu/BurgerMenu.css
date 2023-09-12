@@ -75,8 +75,8 @@
 
 @media screen and (max-width: 435px) {
   .popup__content {
-    margin: 0 10px;
-    padding: 144px 0 0;
+    margin: 0;
+    padding: 144px 10px 0;
     width: 100%;
   }
 
@@ -95,5 +95,4 @@
   .popup__nav {
     gap: 17px
   }
-
 }

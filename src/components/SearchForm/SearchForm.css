@@ -32,12 +32,18 @@
   font-style: normal;
   font-weight: 500;
   line-height: 1.3;
-  text-align: left;
-  outline: none;
+  text-align: left;  
   border: none;
+  min-width: 67%;
 }
 
-.search__button {
+.searchform__input:focus {
+  outline: solid 1px #A0A0A0;
+  outline-offset: 4px;
+  border-radius: 20px;  
+}
+
+.searchform__button {
   margin: 0;
   padding: 0;
   width: 80px;

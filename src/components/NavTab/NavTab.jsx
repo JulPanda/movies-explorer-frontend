@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 function NavTab() {
   return (
-    <div className="navtab">
+    <section className="navtab">
       <div className="navtab__menu">
         <NavLink to="#about-project" reloadDocument className="link navtab__link">
           О проекте
@@ -15,7 +15,7 @@ function NavTab() {
           Студент
         </NavLink>
       </div>
-    </div>
+    </section>
   );
 }
 

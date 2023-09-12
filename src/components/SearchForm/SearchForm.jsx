@@ -24,7 +24,7 @@ function SearchForm() {
             onChange={handleChange}
             value={""}
           />
-          <button className="button search__button" type="submit"></button>
+          <button className="button searchform__button" type="submit"></button>
         </form>
         <FilterCheckbox />        
       </div>

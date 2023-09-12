@@ -5,7 +5,7 @@ import Navigation from "../Navigation/Navigation";
 
 function Header(props) {
   return (
-    <header className={`header header__theme_${props.className}`}>
+    <header className={`header header__theme header__theme_${props.className}`}>
       <div className="header__content">
         <NavLink to="/">
           <img src={logo} alt="Логотип" className="header__logo" />

@@ -1,4 +1,4 @@
-.navigation__main {
+.navigation {
   display: contents;
 }
 
@@ -61,7 +61,7 @@
 }
 
 @media screen and (max-width: 789px) {
-  .navigation__main {
+  .navigation {
     display: none;
   }
 

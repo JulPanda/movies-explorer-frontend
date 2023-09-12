@@ -22,7 +22,7 @@ function Profile({ loggedIn, signOut, handleUserChance }) {
   };
 
   return (
-    <div className="profile">
+    <main className="profile">
       <h2 className="profile__title">Привет, Виталий!</h2>
       <form onSubmit={handleSubmit} className="profile__form">
         <div className="profile__input-container">
@@ -76,7 +76,7 @@ function Profile({ loggedIn, signOut, handleUserChance }) {
           </div>
         )}
       </form>
-    </div>
+    </main>
   );
 }
 
