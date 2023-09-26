@@ -1,19 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 
-function FilterCheckbox() {
-  const [checked, setChecked] = useState(true);
-
-  const handleChange = () => {
-    setChecked(!checked);
-  };
+function FilterCheckbox({ handleChangeCheckbox, valueChecked }) {
   return (
     <div className="checkbox">
       <label className="checkbox__content">
         <input
           type="checkbox"
           className="checkbox__input"
-          checked={checked}
-          onChange={handleChange}
+          checked={valueChecked}
+          onChange={handleChangeCheckbox}
         ></input>
         <span className="checkbox__slider"></span>
       </label>

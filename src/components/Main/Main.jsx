@@ -6,9 +6,13 @@ import Techs from "../Techs/Techs";
 import Portfolio from "../Portfolio/Portfolio";
 import Promo from "../Promo/Promo";
 import NavTab from "../NavTab/NavTab";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
-function Main() {
+function Main(props) {
   return (
+    <>
+    <Header className="main" loggedIn={props.loggedIn} />    
     <main>      
       <Promo />
       <NavTab />
@@ -17,6 +21,8 @@ function Main() {
       <AboutMe />
       <Portfolio />
     </main>
+    <Footer />
+    </>
   );
 }
   

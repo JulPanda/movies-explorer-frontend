@@ -11,7 +11,7 @@ function Header(props) {
           <img src={logo} alt="Логотип" className="header__logo" />
         </NavLink>
         {props.loggedIn ? (
-          <Navigation className={`${props.className}`} />
+          <Navigation className={`${props.className}`} loggedIn={props.loggedIn}/>
         ) : (
           <div className="header__user">
             <NavLink className="link header__user-register" to="/signup">
