@@ -26,5 +26,5 @@ export const HOUR = 60;
 export const SHORTTIME = 40;
 
 export const MOVIES_URL = "https://api.nomoreparties.co";
-export const MAIN_URL = "'https://api.movies.jul.nomoreparties.co'";
+export const MAIN_URL = "https://api.movies.jul.nomoreparties.co";
 //export const MAIN_URL = "http://localhost:3000";
