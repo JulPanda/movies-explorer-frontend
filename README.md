@@ -10,5 +10,5 @@
 * Репозиторий фронтенда: https://github.com/JulPanda/movies-explorer-frontend
 * Репозиторий бэкенда: https://github.com/JulPanda/movies-explorer-api
 
-* Пул-реквест: https://
+* Пул-реквест: https://github.com/JulPanda/movies-explorer-frontend/pull/2
 
