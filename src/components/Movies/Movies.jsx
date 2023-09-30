@@ -12,8 +12,10 @@ function Movies(props) {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const [newSearch, setNewSearch] = useState(0);
 
   function handleSearchMovies(word) {
+    setNewSearch(0);
     const filteredMovies = JSON.parse(localStorage.getItem("filtered"));
     const isShort = JSON.parse(localStorage.getItem("checkbox"));
     setIsLoading(true);
@@ -56,6 +58,10 @@ function Movies(props) {
     }
   };
 
+  const handleAddedMovies = (e) => {
+    setNewSearch(newSearch + 1);
+  };
+
   //Восcтановить данные после обновления страницы /movies
   useEffect(() => {
     const movies = JSON.parse(localStorage.getItem("filtered"));
@@ -77,6 +83,8 @@ function Movies(props) {
             onSaveClick={props.onSaveClick}
             onConfirmSaved={props.onConfirmSaved}
             onDeleteClick={props.onDeleteClick}
+            newSearch={newSearch}
+            handleAddedMovies={handleAddedMovies}
           />
         )}
       </main>

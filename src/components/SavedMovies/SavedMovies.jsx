@@ -7,18 +7,22 @@ import Header from "../Header/Header";
 
 import Preloader from "../Preloader/Preloader";
 import { searchMovies } from "../../utils/utils.js";
+import mainApi from "../../utils/MainApi";
 
 function SavedMovies(props) {
-  const [filtredSavedMovies, setFiltredSavedMovies] = useState([]);
+  const [filtredSavedMovies, setFiltredSavedMovies] = useState(
+    props.savedMovies
+  );
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
-  const handleSearchSavedMovies = (word, isShort) => {
-    //const isShort = JSON.parse(localStorage.getItem("SavedCheckbox"));
-
+  const handleSearchSavedMovies = (word) => {
+    const isShort = JSON.parse(localStorage.getItem("savedCheckbox"));
     const rawMovies = props.savedMovies;
     setIsLoading(true);
+
     const filteredMovies = searchMovies(rawMovies, word, isShort);
+
     if (filteredMovies.length === 0) {
       setErrorMsg("Ничего не найдено");
       setFiltredSavedMovies([]);
@@ -27,14 +31,29 @@ function SavedMovies(props) {
       setErrorMsg("");
       setIsLoading(false);
       setFiltredSavedMovies(filteredMovies);
-      localStorage.setItem("savedFiltered", JSON.stringify(filteredMovies));
+      localStorage.setItem("savedFiltered", JSON.stringify(filtredSavedMovies));
     }
   };
 
-  //Восcтановить данные после обновления страницы /movies
-// useEffect(() => {   
-//     setFiltredSavedMovies(filtredSavedMovies)
-//   }, [filtredSavedMovies]);
+  useEffect(() => {
+    setFiltredSavedMovies(props.savedMovies);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.loggedIn]);
+
+  //Удаление фильма
+  const handleDeleteSavedMovie = (movie) => {
+    const id =
+      movie._id ||
+      props.savedMovies.find((item) => item.movieId === movie.id)._id;
+    mainApi
+      .deleteMovie(id)
+      .then(() => {
+        setFiltredSavedMovies((items) => items.filter((c) => c._id !== id));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <>
@@ -48,13 +67,11 @@ function SavedMovies(props) {
           <Preloader />
         ) : (
           <MoviesCardList
-            //movies={props.savedMovies}
             movies={filtredSavedMovies}
-            savedMovies={props.savedMovies}
             onSaveClick={props.onSaveClick}
             onConfirmSaved={props.onConfirmSaved}
             onDeleteClick={props.onDeleteClick}
-            handleSearchMovies={props.handleSearchMovies}
+            onDeleteSavedMovie={handleDeleteSavedMovie}
           />
         )}
       </main>

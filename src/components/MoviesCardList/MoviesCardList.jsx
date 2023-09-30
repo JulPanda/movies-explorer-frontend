@@ -19,11 +19,12 @@ function MoviesCardList(props) {
   const [addedMovies, setAddedMovies] = useState(0);
   const location = useLocation();
   const width = useResize();
+  let maxAll = 0;
 
   const moviesPage = location.pathname === "/movies";
   //const moviesSavedPage = location.pathname === "/saved-movies";
 
-  useEffect(() => {    
+  useEffect(() => {
     if (width >= 1298) {
       setMaxMovies(MAX_MOVIES_XL);
       setAddedMovies(ADD_AMOUNT_L);
@@ -39,24 +40,25 @@ function MoviesCardList(props) {
     }
   }, [width]);
 
-  const handleAddedMovies = (e) => {
-    setMaxMovies(maxMovies + addedMovies);
-  };
+  //const handleAddedMovies = (e) => {
+  //  setMaxMovies(maxMovies + addedMovies);
+  //  console.log(props.movies);
+  //};
 
   return (
     <>
       <section className="moviescard-list">
         {props.movies.map((movie, index) => {
           if (moviesPage) {
-            if (index < maxMovies) {
+            maxAll = maxMovies + addedMovies * props.newSearch;
+            if (index < maxAll) {
               return (
                 <MoviesCard
                   movie={movie}
                   key={movie.id || movie._id}
                   onSaveClick={props.onSaveClick}
-                  onConfirmSaved = {props.onConfirmSaved}
-                  onDeleteClick = {props.onDeleteClick}
-                  
+                  onConfirmSaved={props.onConfirmSaved}
+                  onDeleteClick={props.onDeleteClick}
                 />
               );
             }
@@ -66,10 +68,10 @@ function MoviesCardList(props) {
                 movie={movie}
                 key={movie.id || movie._id}
                 onSaveClick={props.onSaveClick}
-                onConfirmSaved = {props.onConfirmSaved}
-                onDeleteClick = {props.onDeleteClick}
+                onConfirmSaved={props.onConfirmSaved}
+                onDeleteClick={props.onDeleteClick}
                 movies={props.movies}
-                
+                onDeleteSavedMovie = {props.onDeleteSavedMovie}
               />
             );
           }
@@ -78,8 +80,8 @@ function MoviesCardList(props) {
       </section>
       <div className="moviescard-list__error-notfound">{props.errorMsg}</div>
 
-      {moviesPage && maxMovies < props.movies.length && (
-        <MoreItem handleAddedMovies={handleAddedMovies} />
+      {moviesPage && maxAll < props.movies.length && (
+        <MoreItem handleAddedMovies={props.handleAddedMovies} />
       )}
     </>
   );

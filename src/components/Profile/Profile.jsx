@@ -106,7 +106,7 @@ function Profile({ loggedIn, signOut, handleUpdateUser, errorProfile }) {
               <button
                 className="profile__button-save"
                 type="submit"
-                disabled={!(isValidEmail || isValidName)}
+                disabled={!(isValidEmail || isValidName || name !== currentUser.name || email !== currentUser.email)}
               >
                 Сохранить
               </button>

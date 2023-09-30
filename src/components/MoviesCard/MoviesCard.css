@@ -45,7 +45,7 @@
   font-size: 13px;
   font-weight: 500;
   line-height: 1.21;
-  max-width: 270px;
+  max-width: 206px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -119,6 +119,10 @@
   .element__block {
     max-width: 100%;
   }
+
+  .element__title {
+    max-width: 270px;
+  }
 }
 
 @media screen and (max-width: 725px) {
@@ -133,5 +137,9 @@
 
   .element__block {
     max-width: 300px;
+  }
+
+  .element__title {
+    max-width: 236px;
   }
 }

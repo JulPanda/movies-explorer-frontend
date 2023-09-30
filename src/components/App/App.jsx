@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 import Movies from "../Movies/Movies";
@@ -37,6 +37,7 @@ function App() {
   const [errorRegister, setErrorRegister] = useState("");
   const [errorLogin, setErrorLogin] = useState("");
   const [errorProfile, setErrorProfile] = useState("");
+  const [isTokenOk, setIsTokenOk] = useState(false);
 
   //Регистрация
 
@@ -107,6 +108,10 @@ function App() {
         })
         .catch((err) => {
           console.log(err);
+          localStorage.clear();
+        })
+        .finally(() => {
+          setIsTokenOk(true);
         });
     }
   };
@@ -162,7 +167,7 @@ function App() {
   };
 
   //Подтверждение, что фильм в сохраненных
-  const onConfirmSaved = (movie) => {    
+  const onConfirmSaved = (movie) => {
     const isSaved = savedMovies.some((item) => item.movieId === movie.id);
     return isSaved;
   };
@@ -181,7 +186,8 @@ function App() {
 
   // Удаление фильма
   const handleDeleteMovie = (movie) => {
-    const id = movie._id || savedMovies.find((item) => item.movieId === movie.id)._id;
+    const id =
+      movie._id || savedMovies.find((item) => item.movieId === movie.id)._id;
     mainApi
       .deleteMovie(id)
       .then(() => {
@@ -205,16 +211,24 @@ function App() {
           <Route
             path="/signup"
             element={
-              <Register
-                handleRegister={handleRegister}
-                errorRegister={errorRegister}
-              />
+              loggedIn ? (
+                <Navigate to="/" replace />
+              ) : (
+                <Register
+                  handleRegister={handleRegister}
+                  errorRegister={errorRegister}
+                />
+              )
             }
           />
           <Route
             path="/signin"
             element={
-              <Login handleLogin={handleLogin} errorLogin={errorLogin} />
+              loggedIn ? (
+                <Navigate to="/" replace />
+              ) : (
+                <Login handleLogin={handleLogin} errorLogin={errorLogin} />
+              )
             }
           />
           <Route path="/" element={<Main loggedIn={loggedIn} />} />

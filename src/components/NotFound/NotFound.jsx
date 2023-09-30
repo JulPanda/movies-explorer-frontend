@@ -8,7 +8,7 @@ function NotFound() {
     <main className="notfound">
       <h2 className="notfound__mistake">404</h2>
       <p className="notfound__text">Страница не найдена</p>
-      <Link onClick={navigate(-1)} className="link notfound__link-back">
+      <Link onClick={()=>{navigate(-1)}} className="link notfound__link-back">
         Назад
       </Link>
     </main>

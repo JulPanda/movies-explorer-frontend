@@ -9,13 +9,13 @@ function SearchForm({ handleSearchMovies }) {
   const [isShort, setIsShort] = useState(false);
   const location = useLocation();
 
-  const handleChangeCheckbox = (evt) => {    
-    const value = !isShort;
-    setIsShort(value);
+  const handleChangeCheckbox = (evt) => {
+    // const value = !isShort;
+    setIsShort(!isShort);
     if (location.pathname === "/movies") {
-      localStorage.setItem("checkbox", JSON.stringify(value));
+      localStorage.setItem("checkbox", JSON.stringify(!isShort));
     } else {
-      localStorage.setItem("savedCheckbox", JSON.stringify(value));
+      localStorage.setItem("savedCheckbox", JSON.stringify(!isShort));
     }
     handleSearchMovies(word, isShort);
   };
@@ -48,15 +48,7 @@ function SearchForm({ handleSearchMovies }) {
       setWord(restoredWord);
       const restoredCheckbox = JSON.parse(localStorage.getItem("checkbox"));
       setIsShort(restoredCheckbox);
-    } else {
-      const restoreSavedWord = localStorage.getItem("savedWord");
-      setWord(restoreSavedWord);
-      const restoredSavedCheckbox = JSON.parse(
-        localStorage.getItem("savedCheckbox")
-      );
-      setIsShort(restoredSavedCheckbox);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

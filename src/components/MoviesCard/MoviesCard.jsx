@@ -2,7 +2,7 @@ import React from "react";
 import { useLocation, Link } from "react-router-dom";
 import { MOVIES_URL, HOUR } from "../../utils/constants.js";
 
-function MoviesCard({ movie, onSaveClick, onDeleteClick, onConfirmSaved }) {
+function MoviesCard({ movie, onSaveClick, onDeleteClick, onConfirmSaved, onDeleteSavedMovie }) {
   const location = useLocation();
   const isSaved = onConfirmSaved(movie);
   const cardSavedButtonClassName = `element__button-saved ${
@@ -26,9 +26,14 @@ function MoviesCard({ movie, onSaveClick, onDeleteClick, onConfirmSaved }) {
   };
 
   const handleMovieDeleteClick = () => {
-    onDeleteClick(movie);
+    onDeleteClick(movie);    
   };
 
+  const handleSavedMovieDeleteClick = () => {
+    onDeleteSavedMovie(movie);
+  }
+
+  
   return (
     <section className="element-card">
       <li className="element" key={movie.id || movie._id}>
@@ -64,7 +69,7 @@ function MoviesCard({ movie, onSaveClick, onDeleteClick, onConfirmSaved }) {
                 ? isSaved
                   ? handleMovieDeleteClick
                   : handleMovieSavedClick
-                : handleMovieDeleteClick
+                : handleSavedMovieDeleteClick
             }
           ></button>
         </div>
