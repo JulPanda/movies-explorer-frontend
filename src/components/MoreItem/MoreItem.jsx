@@ -1,13 +1,13 @@
 import React from "react";
 
-function MoreItem() {
+function MoreItem(props) {
   return (
     <div className="movies__more">
       <button
             className="button button__movies-more"
             type="button"
             aria-label="добавить фильм"
-            //onClick={}
+            onClick={props.handleAddedMovies}
           >Ещё</button>
     </div>
   );

@@ -29,6 +29,10 @@
   width: 67.7%;
   height: 100%;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .popup__button-close {
@@ -72,11 +76,32 @@
   border-bottom: #000 solid 2px;
 }
 
+.popup__user-profile {
+  margin: 0;
+  padding: 0;
+  background-color: #F9F9F9;
+  width: 100px;
+  height: 32px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.popup__user_text {
+  color: #000;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.142;
+  text-align: center;
+  text-decoration: none;
+}
+
 
 @media screen and (max-width: 435px) {
   .popup__content {
     margin: 0;
-    padding: 144px 10px 0;
+    padding: 144px 10px 46px;
     width: 100%;
   }
 

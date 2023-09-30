@@ -43,6 +43,9 @@ function BurgerMenu({ isMenuOpen, onClose }) {
             Сохраненные фильмы
           </NavLink>
         </nav>
+        <NavLink className="popup__user_text" to="/profile">
+          <button className="popup__user-profile">Аккаунт</button>
+        </NavLink>
       </div>
     </section>
   );

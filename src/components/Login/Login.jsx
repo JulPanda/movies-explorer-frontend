@@ -1,19 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useForm } from "../../hooks/useForm";
-
 import logo from "../../images/logo.svg";
 
-function Login({ handleLogin }) {
-  const { values, handleChange } = useForm({
-    email: "",
-    password: "",
-  });
+function Login({ handleLogin, errorLogin }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    handleLogin(values);
+  const [isValidEmail, setIsValidEmail] = useState(false);
+  const [isValidPassword, setIsValidPassword] = useState(false);
+
+  const [errorEmail, setErrorEmail] = useState("");
+  const [errorPassword, setErrorPassword] = useState("");
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    handleLogin(email, password);
   };
+
+  function handleEmailChange(evt) {
+    const input = evt.target;
+    setEmail(input.value);
+    setIsValidEmail(input.validity.valid);
+    if (!isValidEmail) {
+      setErrorEmail(input.validationMessage);
+    } else {
+      setErrorEmail("");
+    }
+  }
+
+  function handlePasswordChange(evt) {
+    const input = evt.target;
+    setPassword(input.value);
+    setIsValidPassword(input.validity.valid);
+    if (!isValidPassword) {
+      setErrorPassword(input.validationMessage);
+    } else {
+      setErrorPassword("");
+    }
+  }
 
   return (
     <main className="login">
@@ -24,10 +48,10 @@ function Login({ handleLogin }) {
         <h2 className="login__title">Рады видеть!</h2>
       </div>
 
-      <form onSubmit={handleSubmit} className="login__form">        
+      <form onSubmit={handleSubmit} className="login__form" noValidate>
         <p className="login__text">E-mail</p>
         <input
-          id="input-email"
+          id="input-email-login"
           type="email"
           placeholder="Email"
           name="email"
@@ -35,25 +59,35 @@ function Login({ handleLogin }) {
           required
           minLength="2"
           maxLength="30"
-          onChange={handleChange}
-          value={values.email || ""}
+          pattern="^[\w]+@[a-zA-Z]+\.[a-zA-Z]{1,3}$"
+          onChange={handleEmailChange}
+          value={email || ""}
         />
-        <span className="input__error-message input__error-message_red"></span>
+        <span className="input__error-message input__error-message_red">
+          {errorEmail}
+        </span>
         <p className="login__text">Пароль</p>
         <input
-          id="input-password"
+          id="input-password-login"
           type="password"
           placeholder="Пароль"
           name="password"
           className="login__input"
           required
-          onChange={handleChange}
-          value={values.password || ""}
+          onChange={handlePasswordChange}
+          value={password || ""}          
         />
         <span className="input__error-message input__error-message_red">
-          Что-то пошло не так...
+          {errorPassword}
         </span>
-        <button className="login__button" type="submit">
+        <span className="login__error-message login__error-message_red">
+          {errorLogin}
+        </span>
+        <button
+          className="login__button"
+          type="submit"
+          disabled={!(isValidEmail && isValidPassword)}          
+        >
           Войти
         </button>
         <p className="login__footer-text">
